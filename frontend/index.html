@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LIBRAS Web</title>
+
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- MediaPipe (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+
+  <script src="/main.js" defer></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="brand">
+        <h1>Reconhecimento de LIBRAS</h1>
+        <p class="sub">Treino por palavras (alfabeto limitado às letras que o modelo acertou melhor)</p>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel cameraPanel">
+        <div class="panelTitle">Webcam + Landmarks</div>
+
+        <div class="videoWrap">
+          <video id="webcam" autoplay playsinline muted></video>
+          <canvas id="overlay"></canvas>
+
+          <div class="camHint" id="camHint">
+          </div>
+        </div>
+
+        <div class="small" id="camStatus">Iniciando câmera...</div>
+        <div class="pills">
+          <span class="pill">MediaPipe Hands</span>
+          <span class="pill">63 features</span>
+          <span class="pill">Smoothing</span>
+        </div>
+      </section>
+
+      <section class="panel trainPanel">
+        <div class="panelTitle">Treino por palavras</div>
+
+        <div class="trainGrid">
+          <div class="targetCard">
+            <div class="label">Palavra alvo</div>
+            <div class="bigWord" id="targetWord">-</div>
+
+            <div class="progressRow">
+              <span class="label">Letra sugerida</span>
+              <span class="bigLetter" id="suggestedLetter">-</span>
+            </div>
+
+            <div class="label">Você digitou</div>
+            <div class="typed" id="typedWord">-</div>
+
+            <div class="btnRow">
+              <button id="btnToggle">Iniciar</button>
+              <button id="btnAdd" class="secondary" disabled>Adicionar letra</button>
+              <button id="btnDel" class="danger" disabled>Apagar letra</button>
+              <button id="btnSkip" class="secondary" disabled>Pular palavra</button>
+            </div>
+
+            <div class="help" id="trainHelp">
+              Comece clicando em <b>Iniciar</b>. Depois, faça o sinal e clique em <b>Adicionar letra</b>.
+            </div>
+          </div>
+
+          <div class="alphaCard">
+            <div class="panelTitle smallTitle">Alfabeto em Libras</div>
+            <img class="alphaImg" src="/assets/alfabeto_libras.png" alt="Alfabeto em Libras">
+            <div class="small note">
+              Letras usadas: A C D E I L N O P R S V W
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STATUS -->
+      <section class="panel statusPanel">
+        <div class="panelTitle">Status</div>
+
+        <div class="statusLine" id="backendStatus">Backend: verificando...</div>
+        <div class="statusLine" id="handStatus">Mão: aguardando...</div>
+        <div class="statusLine" id="debugStatus">Debug: -</div>
+
+        <div class="resultBox">
+          <div class="label">Letra reconhecida</div>
+          <div class="bigLetter resultLetter" id="letter">-</div>
+          <div class="small">Confiança: <span id="confidence">0.00%</span></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+    </footer>
+  </div>
+</body>
+</html>
