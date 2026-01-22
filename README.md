@@ -3,7 +3,7 @@ LIBRAS Web
 📌 Sobre o Projeto
 O LIBRAS Web é uma aplicação web para reconhecimento de letras do alfabeto em LIBRAS, utilizando visão computacional e aprendizado de máquina.
 O usuário realiza o sinal com a mão, o sistema identifica a letra e permite treinar palavras pré-definidas, formando letra por letra até concluir corretamente.
-O projeto funciona em computador e celular, diretamente pelo navegador.
+O projeto funciona diretamente pelo navegador.
 
 🎯 Objetivo
 Reconhecer letras do alfabeto em LIBRAS
