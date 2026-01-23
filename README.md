@@ -9,6 +9,8 @@ A partir dos landmarks da mão, o sistema gera 63 features (x, y, z de 21 pontos
 
 ✅ Funciona em modo treino por palavras: você precisa acertar a letra esperada, adicionando manualmente quando estiver correta.
 
+Segue o link do projeto: https://github.com/kauangarccia/libras-web
+
 🎯 Objetivos
 Reconhecer letras do alfabeto em LIBRAS (subset treinado)
 Auxiliar no aprendizado e prática de sinais
